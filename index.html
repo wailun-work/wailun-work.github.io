@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <?php $title = "Home"; ?>
-  <title><?= isset($title) ? $title : "Untitled Page" ?> — Wai Lun, Graphic Design</title>
+  <title>Home — Wai Lun, Graphic Design</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
   <style>
@@ -13,7 +12,20 @@
 </head>
 <body class="home">
 
-  <?php include 'menu_coming-soon.php'?>
+  <div class="container-fluid">
+  <div class="row align-items">
+    <div class="col-sm-3 font-helvetica col-md-1 col-4 wlpt-05">
+      <a href="./">Wai Lun</a>
+      <p class="d-block d-md-none">Visual & Design</p>
+    </div>
+    <div class="col-1 font-times col-sm-2 d-none d-md-block">Visual & Design</div>
+    <div class="col-4 col-sm-3 d-none d-md-block"></div> <!-- Spacer -->
+    <div class="col-6 nav-links">
+      <a href="https://www.instagram.com/wailun.work" target="_blank" class="btn font-helvetica">Instagram</a>
+      <a href="https://www.behance.net/wailun-work" target="_blank" class="btn font-helvetica">Behance</a>
+    </div>
+  </div>
+</div>  
 
   <div class="slideshow-container"> 
     <div class="slide slide1 active" data-category="(Category 1)" data-caption="Image Caption here 1">
@@ -32,7 +44,46 @@
     <span class="image-caption font-helvetica">Image Caption here 1</span>
   </div>
 
-<?php include 'script.php'; ?>
+<script>
+  /* Home */
+    const slides = document.querySelectorAll('.slide');
+  const categorySpan = document.querySelector('.caption .category');
+  const captionSpan = document.querySelector('.caption .image-caption');
+  let index = 0;
+
+  // ✅ Initialize first slide
+  slides[index].classList.add('active');
+  categorySpan.textContent = slides[index].getAttribute('data-category');
+  captionSpan.textContent = slides[index].getAttribute('data-caption');
+
+  // ✅ Function to go to the next slide
+  function nextSlide() {
+    slides[index].classList.remove('active');
+    index = (index + 1) % slides.length; // Loop back to first slide
+    slides[index].classList.add('active');
+
+    // Update caption
+    categorySpan.textContent = slides[index].getAttribute('data-category');
+    captionSpan.textContent = slides[index].getAttribute('data-caption');
+  }
+
+  // ✅ Add click event to each image
+  slides.forEach(slide => {
+    slide.addEventListener('click', nextSlide);
+  });
+
+  /* ✅ Menu highlight logic */
+  const links = document.querySelectorAll('.nav-links a');
+  const currentURL = window.location.pathname;
+
+  links.forEach(link => {
+    if (currentURL.includes(link.getAttribute('href'))) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  }); 
+  </script>
 
 </body>
 </html>
