@@ -11,12 +11,12 @@
 
     .font-helvetica{
         font-family: Arial, Helvetica, sans-serif;
-        font-size:11px;
+        font-size:14px;
     }
 
     .font-times{
       font-family: 'Times New Roman', Times, serif;
-      font-size:12px;
+      font-size:15px;
     }
 
      a{
@@ -170,7 +170,7 @@
     }
 
     .image-caption {
-      font-size: 11px;
+      font-size: 14px;
       padding-top:2px;
     }
 
@@ -236,6 +236,13 @@
       background-color: #B6B4B4;
     }
 
+    @media only screen and (min-width: 1921px) {
+      .slide1{
+          width: 49%;
+          height: auto;
+      }
+    }
+
     @media only screen and (max-width: 1440px) {
       /* .slide1{
         bottom: 35px;
@@ -254,6 +261,8 @@
     @media only screen and (min-width: 1681px) {
       .slide1{
         left: 50.5%;
+        width: 49%;
+        height: auto;
       }
       
       .slide3{
@@ -322,17 +331,13 @@
     }
 
     @media only screen and (max-width: 575px) {
-      .slide1{
+      .slide1, .slide3{
         max-width: 95.5%;
       }
 
       .slide2{
         /* height: 100%;
         bottom: 0vh; */
-      }
-
-      .slide3 {
-        width: 96.5%;
       }
     }
 
@@ -351,5 +356,10 @@
     @media only screen and (max-width: 425px) {
        .slide1{
         max-width: 95%;
+        bottom: 110px;
+      }
+
+      .slide2{
+        bottom: 110px;
       }
     }
